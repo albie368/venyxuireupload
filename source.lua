@@ -109,8 +109,8 @@ do
 		self.keybinds = {}
 		self.ended = {}
 		
-		input.InputBegan:Connect(function(key)
-			if self.keybinds[key.KeyCode] then
+		input.InputBegan:Connect(function(key,gameProc)
+			if self.keybinds[key.KeyCode] and not gameProc then
 				for i, bind in pairs(self.keybinds[key.KeyCode]) do
 					bind()
 				end
