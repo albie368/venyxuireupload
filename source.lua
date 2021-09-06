@@ -500,7 +500,7 @@ do
 	
 	-- new modules
 	
-	function library:Notify(title, text, callback)
+	function library:Notify(title, text)
 	
 		-- overwrite last notification
 		if self.activeNotification then
@@ -560,24 +560,6 @@ do
 				TextColor3 = themes.TextColor,
 				TextSize = 12.000,
 				TextXAlignment = Enum.TextXAlignment.Left
-			}),
-			utility:Create("ImageButton", {
-				Name = "Accept",
-				BackgroundTransparency = 1,
-				Position = UDim2.new(1, -26, 0, 8),
-				Size = UDim2.new(0, 16, 0, 16),
-				Image = "rbxassetid://5012538259",
-				ImageColor3 = themes.TextColor,
-				ZIndex = 4
-			}),
-			utility:Create("ImageButton", {
-				Name = "Decline",
-				BackgroundTransparency = 1,
-				Position = UDim2.new(1, -26, 1, -24),
-				Size = UDim2.new(0, 16, 0, 16),
-				Image = "rbxassetid://5012538583",
-				ImageColor3 = themes.TextColor,
-				ZIndex = 4
 			})
 		})
 		
@@ -633,31 +615,11 @@ do
 		
 		self.activeNotification = close
 		
-		notification.Accept.MouseButton1Click:Connect(function()
-		
-			if not active then 
-				return
-			end
-			
-			if callback then
-				callback(true)
-			end
-			
+		local delay = coroutine.wrap(function()
+			wait(5)
 			close()
 		end)
-		
-		notification.Decline.MouseButton1Click:Connect(function()
-		
-			if not active then 
-				return
-			end
-			
-			if callback then
-				callback(false)
-			end
-			
-			close()
-		end)
+		delay()
 	end
 	
 	function section:addButton(title, callback)
