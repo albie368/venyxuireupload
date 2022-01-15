@@ -952,7 +952,7 @@ do
 			if self.binds[keybind].connection then -- unbind
 				
 				if changedCallback then
-						print('thatscrazy!')
+						print('thtscrazy!')
 					changedCallback(nil)
 				end
 				return self:updateKeybind(keybind)
