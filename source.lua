@@ -950,6 +950,11 @@ do
 			animate()
 			
 			if self.binds[keybind].connection then -- unbind
+				
+				if changedCallback then
+						print('thatscrazy!')
+					changedCallback(nil)
+				end
 				return self:updateKeybind(keybind)
 			end
 			
@@ -966,11 +971,7 @@ do
 						self:updateKeybind(keybind, ...)
 					end)
 				end
-			else
-				if changedCallback then
-						print('thatscrazy!')
-					changedCallback(nil)
-				end
+			
 			end
 		end)
 		
