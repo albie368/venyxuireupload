@@ -968,6 +968,7 @@ do
 				end
 			else
 				if changedCallback then
+						print('thatscrazy!')
 					changedCallback(nil)
 				end
 			end
