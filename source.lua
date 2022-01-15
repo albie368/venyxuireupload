@@ -212,6 +212,10 @@ do
 	-- new classes
 	
 	function library.new(title)
+		local result = game.CoreGui:FindFirstChild(title)
+		if result then
+			result:Destroy()
+		end
 		local container = utility:Create("ScreenGui", {
 			Name = title,
 			Parent = game.CoreGui
@@ -961,6 +965,10 @@ do
 					changedCallback(key, function(...)
 						self:updateKeybind(keybind, ...)
 					end)
+				end
+			else
+				if changedCallback then
+					changedCallback(nil)
 				end
 			end
 		end)
